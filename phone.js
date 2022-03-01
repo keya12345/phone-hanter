@@ -1,4 +1,7 @@
 //load phone:
+
+        
+        secondError=''
 const loadPhone=()=>{
     const searchBox = document.getElementById('search-box')
     const searchText= searchBox.value
@@ -6,6 +9,10 @@ const loadPhone=()=>{
     if(searchText.length===0){
         const firstError =document.getElementById('first-error')
         firstError.style.display='block'
+        const secondError =document.getElementById('second-error')
+        secondError=''
+        secondError.style.display='none'
+        
     } 
 else{
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
@@ -21,10 +28,15 @@ const displayLoad=(phones)=>{
     main.textContent=''
      if(phones.length==0){
         const secondError =document.getElementById('second-error')
-        console.log(secondError)
         secondError.style.display='block'
+        const firstError =document.getElementById('first-error')
+        firstError.style.display='none'
+        firstError=''
         
     }
+
+    
+
  phones.forEach(phone => {
      //console.log(phone)
      //console.log(phone.slug)
@@ -36,13 +48,14 @@ const displayLoad=(phones)=>{
     <h4 class="card-title text-primary">${phone.brand}</h4>
     <h3 class="card-title text-success">${phone.phone_name}</h3>
     <button onclick="phoneDetails('${phone.slug}')" class="border-info rounded bg-primary  fw-bold text-white">phone-details</button>
-    
+    if(phone.slice())
      </div>
      </div>`
      main.appendChild(div)
     
               
 });
+
 }
 
 const phoneDetails=(id)=>{
