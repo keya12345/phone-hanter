@@ -19,17 +19,23 @@ else{
 const displayLoad=(phones)=>{
     const main = document.getElementById('main')
     main.textContent=''
+     if(phones.length==0){
+        const secondError =document.getElementById('second-error')
+        console.log(secondError)
+        secondError.style.display='block'
+        
+    }
  phones.forEach(phone => {
      //console.log(phone)
      //console.log(phone.slug)
     const div=document.createElement('div')
     div.classList.add('col')
-    div.innerHTML=`<div onclick="phoneDetails('${phone.slug}')" class="card w-75" >
+    div.innerHTML=`<div  class="card w-75" >
     <img  w-25 h-auto src="${phone.image}" class="card-img-top" alt="...">
     <div class="card-body">
     <h4 class="card-title text-primary">${phone.brand}</h4>
     <h3 class="card-title text-success">${phone.phone_name}</h3>
-    
+    <button onclick="phoneDetails('${phone.slug}')" class="border-info rounded bg-primary  fw-bold text-white">phone-details</button>
     
      </div>
      </div>`
@@ -49,7 +55,7 @@ const phoneDetails=(id)=>{
 }
 
 const displayDetails=(details)=>{
-    console.log(details)
+    //console.log(details)
    const detailsSite =document.getElementById('details-site')
    detailsSite.textContent=''
    const div=document.createElement('div')

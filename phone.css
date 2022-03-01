@@ -1,4 +1,9 @@
-.error {
+.error1 {
   display: none;
   color: red;
+}
+
+.error2 {
+  display: none;
+  color: green;
 }
