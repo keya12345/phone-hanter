@@ -8,6 +8,9 @@ const firstError=displayStyle=>{
 const secondError=displayStyle=>{
     document.getElementById('second-error').style.display=displayStyle
 }
+const detailsStyle=displayStyle=>{
+    document.getElementById('details-site').style.display=displayStyle
+}
 
 //load phone:
 const loadPhone=()=>{
@@ -19,7 +22,7 @@ const loadPhone=()=>{
     if(searchText.length===0){
         firstError('block')
         secondError('none')
-        
+        detailsStyle('none')
         
     } 
 else{
@@ -39,7 +42,7 @@ const displayLoad=(phones)=>{
      if(phones.length==0){
          secondError('block')
          firstError('none')
-        
+        detailsStyle('none')
         
         
     }
@@ -112,6 +115,6 @@ const displayDetails=(details)=>{
    `
    detailsSite.appendChild(div)
    
-
+    detailsStyle('block')
 }
 
