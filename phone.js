@@ -2,6 +2,12 @@
 const toggleSpinner=displayStyle=>{
     document.getElementById('spinner').style.display=displayStyle
 }
+const firstError=displayStyle=>{
+    document.getElementById('first-error').style.display=displayStyle
+}
+const secondError=displayStyle=>{
+    document.getElementById('second-error').style.display=displayStyle
+}
 
 //load phone:
 const loadPhone=()=>{
@@ -11,11 +17,9 @@ const loadPhone=()=>{
     const searchText= searchBox.value
     searchBox.value= ''
     if(searchText.length===0){
-        const firstError =document.getElementById('first-error')
-        firstError.style.display='block'
-        const secondError =document.getElementById('second-error')
-        secondError=''
-        secondError.style.display='none'
+        firstError('block')
+        secondError('none')
+        
         
     } 
 else{
@@ -33,11 +37,10 @@ const displayLoad=(phones)=>{
     const main = document.getElementById('main')
     main.textContent=''
      if(phones.length==0){
-        const secondError =document.getElementById('second-error')
-        secondError.style.display='block'
-        const firstError =document.getElementById('first-error')
-        firstError.style.display='none'
-        firstError=''
+         secondError('block')
+         firstError('none')
+        
+        
         
     }
    
@@ -45,7 +48,8 @@ const displayLoad=(phones)=>{
     
 //forEach use
  phones.slice(0,20).forEach(phone => {
-     
+     firstError('none')
+     secondError('none')
     const div=document.createElement('div')
     div.classList.add('col')
     div.innerHTML=`<div  class="card w-75" >
@@ -61,6 +65,7 @@ const displayLoad=(phones)=>{
     
               
 });
+toggleSpinner('none')
 
 }
 
@@ -96,12 +101,11 @@ const displayDetails=(details)=>{
         
        
         <h4 class="text-info fw-bold">Others:</h4>
-        <h5>Bluetooth: ${details.others.Bluetooth}</h5>
-        <h5>GPS: ${details.others.GPS}</h5>
-        <h5>NFC: ${details.others.NFC}</h5>
-        <h5>Radio: ${details.others.Radio}</h5>
-        <h5>USB: ${details.others.USB}</h5>
-        <h5>WLAN: ${details.others.WLAN}</h5>
+        <h5>Bluetooth: ${details?.others?.Bluetooth? details?.others?.Bluetooth:"No found"}</h5>
+        <h6>GPS: ${details?.others?.GPS? details?.others?.GPS:"no found"}</h6>
+        
+        <h6>USB: ${details?.others?.USB? details?.others?.USB:"no found"}</h6>
+        <h6>WLAN: ${details?.others?.WLAN? details?.others?.WLAN:"no found"}</h6>
       
      
    </div>
