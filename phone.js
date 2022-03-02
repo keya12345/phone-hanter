@@ -12,6 +12,7 @@ const detailsStyle=displayStyle=>{
     document.getElementById('details-site').style.display=displayStyle
 }
 
+
 //load phone:
 const loadPhone=()=>{
     const searchBox = document.getElementById('search-box')
@@ -23,6 +24,7 @@ const loadPhone=()=>{
         firstError('block')
         secondError('none')
         detailsStyle('none')
+        
         
     } 
 else{
@@ -45,6 +47,7 @@ const displayLoad=(phones)=>{
         detailsStyle('none')
         
         
+        
     }
    
 
@@ -65,7 +68,7 @@ const displayLoad=(phones)=>{
      </div>
      </div>`
      main.appendChild(div)
-    
+   
               
 });
 toggleSpinner('none')
